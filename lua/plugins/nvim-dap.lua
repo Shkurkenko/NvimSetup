@@ -1,18 +1,13 @@
--- return {
--- 		"mfussenegger/nvim-dap",
--- 		config = function()
--- 			require("configs.dap")
--- 		end,
--- 		lazy = false,
--- }
 return {
   "mfussenegger/nvim-dap",
+  lazy = true,
   optional = true,
   dependencies = {
     -- Ensure C/C++ debugger is installed
     "mason-org/mason.nvim",
     optional = true,
-    opts = { ensure_installed = {
+    opts = {
+      ensure_installed = {
         "codelldb",
         "cmakelang",
         "cmakelint",
@@ -27,7 +22,7 @@ return {
     },
   },
   opts = function()
-    local dap = require("dap")
+    local dap = require "dap"
     if not dap.adapters["codelldb"] then
       require("dap").adapters["codelldb"] = {
         type = "server",
@@ -42,7 +37,7 @@ return {
         },
       }
     end
-    for _, lang in ipairs({ "c", "cpp" }) do
+    for _, lang in ipairs { "c", "cpp" } do
       dap.configurations[lang] = {
         {
           type = "codelldb",

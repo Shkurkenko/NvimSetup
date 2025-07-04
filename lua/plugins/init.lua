@@ -39,6 +39,12 @@ return {
           keys = {
             { "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
           },
+          on_new_config = function(new_config, new_cwd)
+            local status, cmake = pcall(require, "cmake-tools")
+            if status then
+              cmake.clangd_on_new_config(new_config)
+            end
+          end,
           root_dir = function(fname)
             return require("lspconfig.util").root_pattern(
               "Makefile",

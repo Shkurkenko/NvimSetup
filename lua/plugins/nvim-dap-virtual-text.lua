@@ -1,7 +1,7 @@
 return {
-  "rcarriga/nvim-dap-ui",
+  "theHamsta/nvim-dap-virtual-text",
+  config = true,
   dependencies = {
     "mfussenegger/nvim-dap",
-    "nvim-neotest/nvim-nio",
   },
 }
