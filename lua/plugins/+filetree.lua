@@ -50,6 +50,12 @@ return {
     local nvim_tree = require("nvim-tree")
     local icons = require("config.icons")
 
+    nvim_tree.setup({
+      view = {
+        preserve_window_proportions = true,
+      }
+    })
+
     --
     -- This function has been generated from your
     --   view.mappings.list

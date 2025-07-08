@@ -12,6 +12,33 @@ local keymap = vim.keymap.set
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Quicker from quicker.nvim git repo
+keymap("n", "<leader>q", function() require "quicker".toggle() end, { silent = true, desc = "Toggle Quicker" })
+keymap("n", "<leader>l", function() require "quicker".toggle({ loclist = true }) end, { desc = "Toggle loclist" })
+
+-- vim.keymap.set("n", "<leader>l", function()
+--   require("quicker").toggle({ loclist = true })
+-- end, {
+--   desc = "Toggle loclist",
+-- })
+-- require("quicker").setup({
+--   keys = {
+--     {
+--       ">",
+--       function()
+--         require("quicker").expand({ before = 2, after = 2, add_to_existing = true })
+--       end,
+--       desc = "Expand quickfix context",
+--     },
+--     {
+--       "<",
+--       function()
+--         require("quicker").collapse()
+--       end,
+--       desc = "Collapse quickfix context",
+--     },
+--   },
+-- })
 ------------------------ Normal Mode -----------------------------------------
 -- Debug
 keymap({ "n", "t" }, "<A-o>", function() require "dap".step_out() end, { silent = true, desc = "step out" })

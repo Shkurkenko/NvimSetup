@@ -70,8 +70,7 @@ return {
     end
   },
   {
-    -- dir = "~/.local/share/nvim/personal/cmake-tools.nvim",
-    "Civitasv/cmake-tools.nvim",
+    "shkurmake-tools.nvim",
     dependencies = {
       "stevearc/overseer.nvim",
     },
@@ -109,12 +108,13 @@ return {
           },
         }
       })
-      require("cmake-tools").setup({
+      require("shkurmake-tools").setup({
         cmake_command = "cmake",                                          -- this is used to specify cmake command path
         ctest_command = "ctest",
+        cmake_use_preset = true,
         cmake_regenerate_on_save = true,                                  -- auto generate when save CMakeLists.txt
         cmake_generate_options = { "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" }, -- this will be passed when invoke `CMakeGenerate`
-        cmake_build_options = { "-j4" },                                  -- this will be passed when invoke `CMakeBuild`
+        cmake_build_options = { "-j12" },                                  -- this will be passed when invoke `CMakeBuild`
         cmake_build_directory = "out/${variant:buildType}",               -- this is used to specify generate directory for cmake
         cmake_compile_commands_options = {
           action = "soft_link",                                           -- available options: soft_link, copy, lsp, none
@@ -124,6 +124,7 @@ return {
           -- none:      this will make this option ignored
           target = vim.loop.cwd()                                                          -- path to directory, this is used only if action == "soft_link" or action == "copy"
         },
+        cmake_kits_path = nil,
         -- cmake_kits_path = "/Users/civitasv/.local/share/CMakeTools/cmake-tools-kits.json", -- this is used to specify global cmake kits path, see CMakeKits for detailed usage
         cmake_variants_message = {
           short = { show = true },                                                         -- whether to show short message
@@ -162,13 +163,16 @@ return {
                 }
               },   -- options to pass into the `overseer.new_task` command
               on_new_task = function(_)
+                require("overseer").open(
+                  { enter = false, direction = "right" }
+                )
               end, -- a function that gets overseer.Task when it is created, before calling `task:start`
             },
             terminal = {
-              name = "Main Terminal",
+              name = "CMake Terminal",
               prefix_name = "[CMakeTools]: ", -- This must be included and must be unique, otherwise the terminals will not work. Do not use a simple spacebar " ", or any generic name
               split_direction = "horizontal", -- "horizontal", "vertical"
-              split_size = 10,
+              split_size = 11,
 
               -- Window handling
               single_terminal_per_instance = true,  -- Single instance, multiple windows

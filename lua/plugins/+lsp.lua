@@ -83,7 +83,7 @@ return {
         "lua_ls",
         "clangd",
         "rust_analyzer",
-        "hls",
+        -- "hls",
         "prosemd_lsp",
         "cssls",
         "vuels",
@@ -142,7 +142,7 @@ return {
         capabilities = lsp.capabilities,
         on_attach = lsp.on_attach,
         on_new_config = function(new_config, _)
-          local status, cmake = pcall(require, "cmake-tools")
+          local status, cmake = pcall(require, "shkurmake-tools")
           if status then
             cmake.clangd_on_new_config(new_config)
           end
@@ -173,7 +173,7 @@ return {
         -- "jsonls",
         "lua_ls",
         "clangd",
-        "hls",
+        -- "hls",
         "prosemd_lsp",
         "cssls",
         "texlab",
