@@ -609,7 +609,30 @@ return {
       })
 
       local Terminal = require("toggleterm.terminal").Terminal
-      local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+      local lazygit = Terminal:new({
+        cmd = "lazygit",
+        dir = "git_dir",
+        hidden = true,
+        direction = "float",
+        float_opts = {
+          border = "double",
+        },
+      })
+      local lazydocker = Terminal:new({ cmd = "lazydocker" })
+      local btop = Terminal:new({ cmd = "btop", hidden = true })
+      local posting = Terminal:new({ cmd = "posting", hidden = true })
+
+      function _POSTING_TOGGLE()
+        posting:toggle()
+      end
+
+      function _DOCKER_TOGGLE()
+        lazydocker:toggle()
+      end
+
+      function _BTOP_TOGGLE()
+        btop:toggle()
+      end
 
       function _LAZYGIT_TOGGLE()
         lazygit:toggle()
@@ -633,7 +656,7 @@ return {
         htop:toggle()
       end
 
-      local python = Terminal:new({ cmd = "python", hidden = true })
+      local python = Terminal:new({ cmd = "python3", hidden = true })
 
       function _PYTHON_TOGGLE()
         python:toggle()
@@ -801,16 +824,16 @@ return {
       which_key.add({
         mode = { "n" },
         { "<leader>b", group = "+buffers" },
-        {"<leader>c", group = "+cmake" },
-        {"<leader>d", group = "+debug" },
-        {"<leader>f", group = "+find" },
-        {"<leader>g", group = "+git" },
-        {"<leader>l", group = "+lsp" },
-        {"<leader>m", group = "+markdown" },
-        {"<leader>r", group = "+rust" },
-        {"<leader>t", group = "+terminal" },
-        {"<leader>w", group = "+window" },
-        {"<leader>x", group = "+trouble" },
+        { "<leader>c", group = "+cmake" },
+        { "<leader>d", group = "+debug" },
+        { "<leader>f", group = "+find" },
+        { "<leader>g", group = "+git" },
+        { "<leader>l", group = "+lsp" },
+        { "<leader>m", group = "+markdown" },
+        { "<leader>r", group = "+rust" },
+        { "<leader>t", group = "+terminal" },
+        { "<leader>w", group = "+window" },
+        { "<leader>x", group = "+trouble" },
       })
     end
   },

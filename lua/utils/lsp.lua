@@ -40,8 +40,8 @@ local function lsp_keymaps(client, bufnr)
 
   -- Diagnostic jump
   -- You can use <C-o> to jump back to your previous location
-  keymap("n", "[d", vim.diagnostic.goto_prev, "Go to previous diagnostic")
-  keymap("n", "]d", vim.diagnostic.goto_next, "Go to next diagnostic")
+  keymap("n", "[d", vim.diagnostic.get_next(), "Go to previous diagnostic")
+  keymap("n", "]d", vim.diagnostic.get_prev(), "Go to next diagnostic")
 
   -- If you want to keep the hover window in the top right hand corner,
   -- you can pass the ++keep argument

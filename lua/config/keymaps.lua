@@ -210,18 +210,21 @@ keymap("n", "<leader>:", function()
   end)
 end, { silent = true, desc = "Compile" })
 
--- terminal
+-- Terminal
 keymap("n", "<leader>e", "<cmd>lua _MAGIT_TOGGLE()<CR>", { desc = "Magit" })
 keymap("n", "<leader>tn", "<cmd>lua _NODE_TOGGLE()<CR>", { desc = "Node" })
 keymap("n", "<leader>tp", "<cmd>lua _PYTHON_TOGGLE()<CR>", { desc = "Python" })
-keymap("n", "<leader>tg", "<cmd>lua _GLOW_TOGGLE()<CR>", { desc = "Preview markdown" })
+keymap("n", "<leader>tm", "<cmd>lua _GLOW_TOGGLE()<CR>", { desc = "Preview markdown" })
+keymap("n", "<leader>td", "<cmd>lua _DOCKER_TOGGLE()<CR>", { desc = "Docker" })
+keymap("n", "<leader>tr", "<cmd>lua _POSTING_TOGGLE()<CR>", { desc = "Docker" })
+keymap("n", "<leader>tb", "<cmd>lua _BTOP_TOGGLE()<CR>", { desc = "Btop" })
 keymap("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { desc = "Float" })
 keymap("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<CR>", { desc = "Horizontal" })
 keymap("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<CR>", { desc = "Vertical" })
 
-keymap("n", "<leader>n", "<cmd>noh<CR>", { desc = "Clear highlight" })
+-- keymap("n", "<leader>n", "<cmd>noh<CR>", { desc = "Clear highlight" })
 
--- trouble
+-- Trouble
 keymap("n", "<leader>xx", function() require("trouble").toggle() end, { desc = "Show trouble" })
 keymap("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end, { desc = "Workspace diagnostics" })
 keymap("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end, { desc = "Document diagnostics" })
