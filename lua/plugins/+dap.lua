@@ -34,6 +34,7 @@ return {
     })
 
     dapui.setup({
+      -- NOTE: not using this getting you full power, but you able to uncomment or generate another config for debugger ui blocks
       -- layouts = {
       --   {
       --     elements = {
